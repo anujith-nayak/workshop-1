@@ -14,6 +14,15 @@ const { title = "Tailspin Toys" } = Astro.props;
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
+        <script is:inline>
+            try {
+                if (localStorage.getItem('tailspin-high-contrast') === 'true') {
+                    document.documentElement.classList.add('high-contrast');
+                }
+            } catch {
+                // Continue with the default theme when storage is unavailable.
+            }
+        </script>
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
